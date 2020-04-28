@@ -1,0 +1,76 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMAIL.Views"
+        xmlns:Utilisateur="clr-namespace:SIMAIL.Classes.Utilisateur" x:Class="SIMAIL.Views.Connexion"
+        Icon="/Resources/icons/email_32.png"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="Connexion" Height="700" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+       
+        <Grid HorizontalAlignment="Center" Height="478" Margin="312,46,312,45" VerticalAlignment="Center" Width="368">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="I_Connexion_Login" TabIndex="0" HorizontalAlignment="Center" Height="30"  TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Margin="60,204,60,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GotFocus="I_Connexion_Login_GotFocus" LostFocus="I_Connexion_Login_LostFocus"/>
+            <PasswordBox x:Name="I_Connexion_Pass" TabIndex="1" HorizontalAlignment="Center" Height="30" KeyDown="I_Connexion_Pass_KeyDown" VerticalAlignment="Center" Width="248" Margin="60,263,60,185" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" LostFocus="I_Connexion_Pass_LostFocus"/>
+            <ComboBox x:Name="I_Connexion_Fournisseur" HorizontalAlignment="Center" Margin="60,324,60,124" VerticalAlignment="Center" Width="248" HorizontalContentAlignment="Center" Height="30" VerticalContentAlignment="Center" GotFocus="I_Connexion_Fournisseur_GotFocus" LostFocus="I_Connexion_Fournisseur_GotFocus" TabIndex="2"/>
+            <ProgressBar Name="PG_Mailbox" IsIndeterminate="False" Height="4" Margin="60,354,60,0" VerticalAlignment="Top" Foreground="#FF99B4D1" Width="248" Visibility="Hidden"/>
+            <Button x:Name="BT_Connexion" TabIndex="9" Content="Connexion" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="150" Margin="108,377,110,67" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="BT_Connexion_Click" Foreground="White" BorderBrush="#FF99B4D1" >
+                <Button.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
+                </Button.Background>
+            </Button>
+            <Image Source="/Resources/logo/logo_white2.png" HorizontalAlignment="Center" Height="120" VerticalAlignment="Top" Width="290" Margin="38,43,40,0" RenderTransformOrigin="0.507,0.488"/>
+            <Button Name="BT_Connexion_Gmail" Content="Gmail" HorizontalAlignment="Left" Margin="108,426,0,0" VerticalAlignment="Top" Width="150" Height="35" Click="BT_Connexion_Gmail_Click"/>
+        </Grid>
+        <DockPanel HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Stretch" LastChildFill="False" Margin="0,0,0,0" Width="250">
+             <StackPanel x:Name="IG_Connexion_Param"  Margin="0,0,0,0" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Stretch" Width="250" ScrollViewer.VerticalScrollBarVisibility="Hidden" UseLayoutRounding="False" >
+                <StackPanel.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFEAF0FF" Offset="0"/>
+                        <GradientStop Color="#FF99B4D1" Offset="1"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
+                <Button Content="Fermer" Click="Button_Click" Height="33" Foreground="Black" ClickMode="Press" BorderBrush="#FFACACAC" Background="#FFEAEAEA"/>
+                <Label HorizontalAlignment="Left" Margin="24,10,0,0" Content="Compte de Messagerie" Foreground="White" FontSize="14"/>
+                <TextBox x:Name="I_CptMessagerie_Fournisseur" HorizontalAlignment="Center" Margin="24,10,24,0" Width="200" Height="25" TextWrapping="Wrap" LostFocus="I_CptMessagerie_Fournisseur_LostFocus" GotFocus="I_CptMessagerie_Fournisseur_GotFocus" TabIndex="13" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox x:Name="I_CptMessagerie_AdresseIMAP" TabIndex="14" HorizontalAlignment="Center" Margin="24,10,24,0" Width="200" Height="25" TextWrapping="Wrap" LostFocus="I_CptMessagerie_AdresseIMAP_LostFocus" GotFocus="I_CptMessagerie_AdresseIMAP_GotFocus" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="I_CptMessagerie_PortIMAP" TabIndex="15" HorizontalAlignment="Left" Margin="24,10,24,0" Height="25" Width="80" TextWrapping="Wrap" PreviewTextInput="NumberValidationTextBox" LostFocus="I_CptMessagerie_PortIMAP_LostFocus" GotFocus="I_CptMessagerie_PortIMAP_GotFocus" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label HorizontalAlignment="Left" Margin="25,10,0,0" TabIndex="16" Content="Chiffrement des données" Foreground="White" FontSize="14"/>
+                <StackPanel>
+                    <RadioButton Name="I_ChiffrementIMAPAucun" GroupName="ChiffrementIMAP" Foreground="White" Margin="24,5,80,0" IsChecked="True">Aucun</RadioButton>
+                    <RadioButton Name="I_ChiffrementIMAPSSL" GroupName="ChiffrementIMAP" Foreground="White" Margin="24,5,80,0">SSL</RadioButton>
+                    <RadioButton Name="I_ChiffrementIMAPTLS" GroupName="ChiffrementIMAP" Foreground="White" Margin="24,5,80,0">TLS</RadioButton> 
+                </StackPanel>
+                <Separator Margin="0,10,0,0" Height="20"/>
+                <TextBox x:Name="I_CptMessagerie_AdresseSMTP" TabIndex="17" HorizontalAlignment="Center" Margin="24,10,24,0" Width="200" Height="25" TextWrapping="Wrap" LostFocus="I_CptMessagerie_AdresseSMTP_LostFocus" GotFocus="I_CptMessagerie_AdresseSMTP_GotFocus" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="I_CptMessagerie_PortSMTP" TabIndex="18" HorizontalAlignment="Left" Margin="24,10,24,0" Height="25" Width="80" TextWrapping="Wrap" LostFocus="I_CptMessagerie_PortSMTP_LostFocus" GotFocus="I_CptMessagerie_PortSMTP_GotFocus" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label HorizontalAlignment="Left" Margin="25,10,0,0" Content="Chiffrement des données" Foreground="White" FontSize="14"/>
+                <StackPanel>
+                    <RadioButton Name="I_ChiffrementSMTPAucun" TabIndex="19" GroupName="ChiffrementSMTP" Foreground="White" Margin="24,5,80,0" IsChecked="True">Aucun</RadioButton>
+                    <RadioButton Name="I_ChiffrementSMTPSSL" GroupName="ChiffrementSMTP" Foreground="White" Margin="24,5,80,0">SSL</RadioButton>
+                    <RadioButton Name="I_ChiffrementSMTPTLS" GroupName="ChiffrementSMTP" Foreground="White" Margin="24,5,80,0">TLS</RadioButton>
+                </StackPanel>
+               
+                <Label HorizontalAlignment="Left" Margin="25,10,0,0" Content="Méthode de connexion" Foreground="White" FontSize="14"/>
+                <ComboBox TabIndex="20" HorizontalAlignment="Center" Margin="24,10,24,0" Width="200" x:Name="I_CptMessagerie_ModeCnx" SelectionChanged="I_CptMessagerie_ModeCnx_SelectionChanged" Height="28" HorizontalContentAlignment="Center" >
+                </ComboBox>
+                <Button x:Name="BT_FournisseurEnregistrer" Margin="50,10,50,0" Width="150" Content="Enregistrer" Click="BT_FournisseurEnregistrer_Click" TabIndex="8" Height="30" Foreground="White" BorderBrush="#FF99B4D1">
+                    <Button.Background>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BT_FournisseurSupprimer" Margin="50,10,50,0" Width="150"  TabIndex="21" Background="#FF99B4D1" Content="Supprimer" Click="BT_FournisseurSupprimer_Click" Height="30" Foreground="White" BorderBrush="#FF99B4D1"/>
+                
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
