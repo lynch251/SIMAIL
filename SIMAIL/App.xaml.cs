@@ -36,7 +36,7 @@ namespace SIMAIL
             App.Current.Resources.Add("pathDefaultCompteServ", appDirectory);
 
             //paramètre de l'application
-            string helpHttpAddress = "https://simail.chupin-pierre.fr/documentation";
+            string helpHttpAddress = "https://github.com/lynch251/SIMAIL";
             App.Current.Resources.Add("helpHttpAddress", helpHttpAddress);
 
             // Do stuff here, e.g. to the window

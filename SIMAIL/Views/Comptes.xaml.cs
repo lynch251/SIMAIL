@@ -64,8 +64,8 @@ namespace SIMAIL.Views
             List<MethConnexion> methConnexionList = new List<MethConnexion>();
             I_CptMessagerie_ModeCnx.ItemsSource = methConnexionList;
             methConnexionList.Add(MethConnexion.Identifiants);
-            methConnexionList.Add(MethConnexion.OAuth2);
-            methConnexionList.Add(MethConnexion.OpenID);
+            //methConnexionList.Add(MethConnexion.OAuth2);
+            //methConnexionList.Add(MethConnexion.OpenID);
 
         }
 
@@ -198,10 +198,10 @@ namespace SIMAIL.Views
                         {
                             I_ChiffrementSMTPSSL.IsChecked = true;
                         }
-                        if (cs.ChiffrementSMTP == CompteServeur.Chiffrement.TLS)
-                        {
-                            I_ChiffrementSMTPTLS.IsChecked = true;
-                        }
+                        //if (cs.ChiffrementSMTP == CompteServeur.Chiffrement.TLS)
+                        //{
+                        //    I_ChiffrementSMTPTLS.IsChecked = true;
+                        //}
                         if (cs.ChiffrementIMAP == CompteServeur.Chiffrement.SSL)
                         {
                             I_ChiffrementIMAPSSL.IsChecked = true;
@@ -253,10 +253,10 @@ namespace SIMAIL.Views
                 {
                     cs.ChiffrementSMTP = CompteServeur.Chiffrement.SSL;
                 }
-                if (I_ChiffrementSMTPTLS.IsChecked ?? false)
-                {
-                    cs.ChiffrementSMTP = CompteServeur.Chiffrement.TLS;
-                }
+                //if (I_ChiffrementSMTPTLS.IsChecked ?? false)
+                //{
+                //    cs.ChiffrementSMTP = CompteServeur.Chiffrement.TLS;
+                //}
 
                 // Sauvegarde dans un fichier
                 cs.saveDefaultDirectory = getPathFolder();

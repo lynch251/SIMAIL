@@ -72,8 +72,8 @@ namespace SIMAIL.Views
             List<MethConnexion> methConnexionList = new List<MethConnexion>();
             I_CptMessagerie_ModeCnx.ItemsSource = methConnexionList;
             methConnexionList.Add(MethConnexion.Identifiants);
-            methConnexionList.Add(MethConnexion.OAuth2);
-            methConnexionList.Add(MethConnexion.OpenID);            
+            //methConnexionList.Add(MethConnexion.OAuth2);
+            //methConnexionList.Add(MethConnexion.OpenID);            
 
             // Fournisseurs
             ListeFournisseurs = new List<CompteServeur>();
@@ -214,10 +214,10 @@ namespace SIMAIL.Views
                 {
                     currentCompteServeur.ChiffrementSMTP = CompteServeur.Chiffrement.SSL;
                 }
-                if (I_ChiffrementSMTPTLS.IsChecked ?? false)
-                {
-                    currentCompteServeur.ChiffrementSMTP = CompteServeur.Chiffrement.TLS;
-                }
+                //if (I_ChiffrementSMTPTLS.IsChecked ?? false)
+                //{
+                //    currentCompteServeur.ChiffrementSMTP = CompteServeur.Chiffrement.TLS;
+                //}
                 // Ajout du serveur de messagerie à la liste 
                 ListeFournisseurs.Add(currentCompteServeur);
                 if (ListeFournisseurs.Contains(gNouveauCptServ)) { ListeFournisseurs.Remove(gNouveauCptServ); }
@@ -283,10 +283,10 @@ namespace SIMAIL.Views
                 {
                     I_ChiffrementSMTPSSL.IsChecked = true;
                 }
-                if (cs.ChiffrementSMTP == CompteServeur.Chiffrement.TLS)
-                {
-                    I_ChiffrementSMTPTLS.IsChecked = true;
-                }
+                //if (cs.ChiffrementSMTP == CompteServeur.Chiffrement.TLS)
+                //{
+                //    I_ChiffrementSMTPTLS.IsChecked = true;
+                //}
                 if(cs.ChiffrementIMAP == CompteServeur.Chiffrement.SSL)
                 {
                     I_ChiffrementIMAPSSL.IsChecked = true;

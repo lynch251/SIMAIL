@@ -23,13 +23,18 @@
             <PasswordBox x:Name="I_Connexion_Pass" TabIndex="1" HorizontalAlignment="Center" Height="30" KeyDown="I_Connexion_Pass_KeyDown" VerticalAlignment="Center" Width="248" Margin="60,263,60,185" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" LostFocus="I_Connexion_Pass_LostFocus"/>
             <ComboBox x:Name="I_Connexion_Fournisseur" HorizontalAlignment="Center" Margin="60,324,60,124" VerticalAlignment="Center" Width="248" HorizontalContentAlignment="Center" Height="30" VerticalContentAlignment="Center" GotFocus="I_Connexion_Fournisseur_GotFocus" LostFocus="I_Connexion_Fournisseur_GotFocus" TabIndex="2"/>
             <ProgressBar Name="PG_Mailbox" IsIndeterminate="False" Height="4" Margin="60,354,60,0" VerticalAlignment="Top" Foreground="#FF99B4D1" Width="248" Visibility="Hidden"/>
-            <Button x:Name="BT_Connexion" TabIndex="9" Content="Connexion" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="150" Margin="108,377,110,67" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="BT_Connexion_Click" Foreground="White" BorderBrush="#FF99B4D1" >
+            <Button x:Name="BT_Connexion" TabIndex="9" FontSize="15" Content="CONNEXION" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="150" Margin="108,377,110,67" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="BT_Connexion_Click" Foreground="White" BorderBrush="#FF99B4D1" >
                 <Button.Background>
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
                 </Button.Background>
             </Button>
             <Image Source="/Resources/logo/logo_white2.png" HorizontalAlignment="Center" Height="120" VerticalAlignment="Top" Width="290" Margin="38,43,40,0" RenderTransformOrigin="0.507,0.488"/>
-            <Button Name="BT_Connexion_Gmail" Content="Gmail" HorizontalAlignment="Left" Margin="108,426,0,0" VerticalAlignment="Top" Width="150" Height="35" Click="BT_Connexion_Gmail_Click"/>
+            <Button Name="BT_Connexion_Gmail" HorizontalAlignment="Left" IsEnabled="False"  Margin="108,426,0,0" VerticalAlignment="Top" Width="150" Height="35" Click="BT_Connexion_Gmail_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icons/google.png" Width="17"/>
+                    <TextBlock Margin="10,0" FontSize="15">GMAIL</TextBlock>
+                </StackPanel>
+            </Button>
         </Grid>
         <DockPanel HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Stretch" LastChildFill="False" Margin="0,0,0,0" Width="250">
              <StackPanel x:Name="IG_Connexion_Param"  Margin="0,0,0,0" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Stretch" Width="250" ScrollViewer.VerticalScrollBarVisibility="Hidden" UseLayoutRounding="False" >
@@ -56,8 +61,7 @@
                 <Label HorizontalAlignment="Left" Margin="25,10,0,0" Content="Chiffrement des données" Foreground="White" FontSize="14"/>
                 <StackPanel>
                     <RadioButton Name="I_ChiffrementSMTPAucun" TabIndex="19" GroupName="ChiffrementSMTP" Foreground="White" Margin="24,5,80,0" IsChecked="True">Aucun</RadioButton>
-                    <RadioButton Name="I_ChiffrementSMTPSSL" GroupName="ChiffrementSMTP" Foreground="White" Margin="24,5,80,0">SSL</RadioButton>
-                    <RadioButton Name="I_ChiffrementSMTPTLS" GroupName="ChiffrementSMTP" Foreground="White" Margin="24,5,80,0">TLS</RadioButton>
+                    <RadioButton Name="I_ChiffrementSMTPSSL" GroupName="ChiffrementSMTP" Foreground="White" Margin="24,5,80,0">SSL/TLS</RadioButton>
                 </StackPanel>
                
                 <Label HorizontalAlignment="Left" Margin="25,10,0,0" Content="Méthode de connexion" Foreground="White" FontSize="14"/>

@@ -8,6 +8,7 @@ using Syroot.Windows.IO;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Mail;
 using System.Threading;
 using System.Threading.Tasks;
@@ -139,23 +140,23 @@ namespace SIMAIL.Classes.Utilisateur
         {
             if (isValid() & this.isAuthenticated())
             {
-                //var vSMTPCnx = new SmtpClient();
+                var vSMTPCnx = new SmtpClient();
 
-                //vSMTPCnx.Host = this.compteServeur.AdresseSMTP;
-                //vSMTPCnx.Port = this.compteServeur.PortSMTP;
-                //if (this.compteServeur.ChiffrementSMTP == CompteServeur.Chiffrement.SSL)
-                //{
-                //    vSMTPCnx.EnableSsl = true;
-                //}
+                vSMTPCnx.Host = this.compteServeur.AdresseSMTP;
+                vSMTPCnx.Port = this.compteServeur.PortSMTP;
+                if (this.compteServeur.ChiffrementSMTP == CompteServeur.Chiffrement.SSL)
+                {
+                    vSMTPCnx.EnableSsl = true;
+                }
                 //if (this.compteServeur.ChiffrementSMTP == CompteServeur.Chiffrement.TLS)
-                //{                   
+                //{
                 //    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 //}
-                //vSMTPCnx.DeliveryMethod = SmtpDeliveryMethod.Network;
-                //System.Net.NetworkCredential SMTPUserInfo = new System.Net.NetworkCredential(this.Identifiant, this.Mdp);
-                //vSMTPCnx.Credentials = SMTPUserInfo;
+                vSMTPCnx.DeliveryMethod = SmtpDeliveryMethod.Network;
+                System.Net.NetworkCredential SMTPUserInfo = new System.Net.NetworkCredential(this.Identifiant, this.Mdp);
+                vSMTPCnx.Credentials = SMTPUserInfo;
 
-                //return vSMTPCnx;
+                return vSMTPCnx;
             }
             return null;
         }
