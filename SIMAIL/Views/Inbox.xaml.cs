@@ -2,6 +2,7 @@
 using MailKit.Net.Imap;
 using MailKit.Search;
 using MimeKit;
+using MimeKit.Text;
 using SIMAIL.Classes.Email;
 using SIMAIL.Classes.Utilisateur;
 using System;
@@ -86,7 +87,7 @@ namespace SIMAIL.Views
             {
                 // Ouverture de la boite mail
                 // Mode réception à l'ouverture de l'inbox
-                currentClient = currentCompteMessagerie.IMAPclient;
+                currentClient = await currentCompteMessagerie.getIMAPConnection();
                 inboxMode = InboxMode.Reception;
                 currentClient.Inbox.Open(FolderAccess.ReadWrite);
 
@@ -316,7 +317,7 @@ namespace SIMAIL.Views
                 {
                     if (e.AddedItems.Count > 0)
                     {
-                        ClearCurrentMail();
+                        //ClearCurrentMail();
                         if (asyncProcessRunning == false)
                         {
                             PG_Mailbox.Visibility = Visibility.Visible;
@@ -359,7 +360,7 @@ namespace SIMAIL.Views
                     cEmail_Contact vContact = new cEmail_Contact(vDestinataire.Address, vDestinataire.Name);
                     vEmail.To.Add(vContact);
                 }
-                vEmail.From = currentCompteMessagerie.Identifiant;
+                vEmail.From = currentCompteMessagerie.Login;
                 vEmail.Object = "RE : " + gCurrentMail.Subject;
                 vEmail.Body.Text = "";
                 vEmail.Body.TextReponse = vEmail.getReponseHeader(gCurrentMail);
@@ -380,7 +381,7 @@ namespace SIMAIL.Views
                 inboxMode = InboxMode.Transfert;
                 SIMAIL.Classes.Email.Email vEmail = new SIMAIL.Classes.Email.Email();
 
-                vEmail.From = currentCompteMessagerie.Identifiant;
+                vEmail.From = currentCompteMessagerie.Login;
                 vEmail.Object = "TR : " + gCurrentMail.Subject;
                 vEmail.Body.Text = "";
                 vEmail.Body.TextReponse = vEmail.getReponseHeader(gCurrentMail);
@@ -445,13 +446,35 @@ namespace SIMAIL.Views
                     }
                     I_CurrentMailSubject.Text = gCurrentMail.Subject.ToString();
                     //Body
-                    if (gCurrentMail.HtmlBody != null)
+                    if (gCurrentMail.HtmlBody != null || gCurrentMail.TextBody != null)
                     {
-                        WB_CurrentMailBody.NavigateToString(gCurrentMail.HtmlBody);
+                        if (gCurrentMail.HtmlBody != null)
+                        {
+                            WB_CurrentMailBody.NavigateToString(gCurrentMail.HtmlBody);
+                        }
+                        else
+                        {
+                            MemoryStream ms = new MemoryStream(UTF8Encoding.Default.GetBytes(gCurrentMail.TextBody));
+                            WB_CurrentMailBody.NavigateToStream(ms);
+                        }                       
                     }
                     else
                     {
-                        MemoryStream ms = new MemoryStream(UTF8Encoding.Default.GetBytes(gCurrentMail.TextBody));
+                        //using (var stream = new MemoryStream())
+                        //{
+                        //    //gCurrentMail.WriteTo(stream);
+                        //    //var encoding = Encoding.GetEncoding(28591);
+                        //    //var Bytes = stream.GetBuffer();
+                        //    //encoding.GetString(Bytes, 0, Bytes.Length);
+                        //    //WB_CurrentMailBody.NavigateToStream(stream);
+
+                        //}
+                        string MessageText = gCurrentMail.GetTextBody(TextFormat.Html);
+                        if (MessageText == null)
+                        {
+                            MessageText = "No Text.";
+                        }
+                        MemoryStream ms = new MemoryStream(UTF8Encoding.Default.GetBytes(MessageText));
                         WB_CurrentMailBody.NavigateToStream(ms);
 
                     }
@@ -658,7 +681,11 @@ namespace SIMAIL.Views
 
         private async void IT_InboxMessages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           await openMail(e);
+            if(IT_InboxMessages.SelectedIndex != -1)
+            {
+                await openMail(e);
+            }
+            
         }
 
         private void M_EmailNouveau_Click(object sender, RoutedEventArgs e)

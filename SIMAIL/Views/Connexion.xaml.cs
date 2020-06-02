@@ -80,7 +80,7 @@ namespace SIMAIL.Views
             currentCompteServeur = new CompteServeur();
 
             // Instance du compte messagerie
-            currentCompteMessagerie = CompteMessagerie.Instance();
+            currentCompteMessagerie = new CompteMessagerie();
 
             I_Connexion_Fournisseur.SelectedIndex = -1;
             I_Connexion_Fournisseur.Items.Clear();
@@ -383,14 +383,14 @@ namespace SIMAIL.Views
                         if (currentCompteServeur.isValid() & I_Connexion_Login.Text != "" & I_Connexion_Pass.Password != "")
                         {
                             currentCompteMessagerie.compteServeur = currentCompteServeur;
-                            currentCompteMessagerie.Identifiant = I_Connexion_Login.Text;
-                            currentCompteMessagerie.Mdp = I_Connexion_Pass.Password;
+                            currentCompteMessagerie.Login = I_Connexion_Login.Text;
+                            currentCompteMessagerie.Pass = I_Connexion_Pass.Password;
                             this.Cursor = Cursors.Wait;
                             IG_Connexion_Param.Visibility = Visibility.Hidden;
                             PG_Mailbox.Visibility = Visibility.Visible;
                             PG_Mailbox.IsIndeterminate = true;
                             asyncProcessRunning = true;
-                            if (await currentCompteMessagerie.Authenticate() != null)
+                            if (await currentCompteMessagerie.getIMAPConnection() != null)
                             {
                                 PG_Mailbox.Visibility = Visibility.Hidden;
                                 PG_Mailbox.IsIndeterminate = false;
@@ -423,13 +423,13 @@ namespace SIMAIL.Views
                         if (I_Connexion_Login.Text != gLoginText & I_Connexion_Login.Text != "")
                         {
                             currentCompteMessagerie.compteServeur = currentCompteServeur;
-                            currentCompteMessagerie.Identifiant = I_Connexion_Login.Text;
+                            currentCompteMessagerie.Login = I_Connexion_Login.Text;
                             this.Cursor = Cursors.Wait;
                             PG_Mailbox.Visibility = Visibility.Visible;
                             PG_Mailbox.IsIndeterminate = true;
                             asyncProcessRunning = true;
 
-                            if (await currentCompteMessagerie.Authenticate() != null)
+                            if (await currentCompteMessagerie.getIMAPConnection() != null)
                             {
                                 PG_Mailbox.Visibility = Visibility.Hidden;
                                 PG_Mailbox.IsIndeterminate = false;
@@ -526,7 +526,7 @@ namespace SIMAIL.Views
 
         private void I_Connexion_Pass_LostFocus(object sender, RoutedEventArgs e)
         {
-            // TODO
+            // TO DO
         }
 
         private void I_CptMessagerie_Fournisseur_LostFocus(object sender, RoutedEventArgs e)

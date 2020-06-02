@@ -46,13 +46,13 @@ namespace SIMAIL
 
         private async void Application_Exit(object sender, ExitEventArgs e)
         {
-            if (cm.IMAPclient != null)
-            {
-                if (cm.IMAPclient.IsConnected)
-                {
-                    await cm.IMAPclient.DisconnectAsync(true);
-                }
-            }    
+            //if (cm.getCnxSMTP() != null)
+            //{
+            //    if (cm.getCnxSMTP().IsConnected)
+            //    {
+            //        await cm.getCnxSMTP().DisconnectAsync(true);
+            //    }
+            //}    
         }
     }
 }

@@ -9,14 +9,19 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SIMAIL_Setup", "SIMAIL_Setu
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09FD0883-4DF5-43E8-B70C-3EC25CB4D245}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{09FD0883-4DF5-43E8-B70C-3EC25CB4D245}.All|Any CPU.Build.0 = Release|Any CPU
 		{09FD0883-4DF5-43E8-B70C-3EC25CB4D245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{09FD0883-4DF5-43E8-B70C-3EC25CB4D245}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09FD0883-4DF5-43E8-B70C-3EC25CB4D245}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09FD0883-4DF5-43E8-B70C-3EC25CB4D245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{761A2A5F-B9C5-4200-ABDF-1F8F9A912AB3}.All|Any CPU.ActiveCfg = Release
+		{761A2A5F-B9C5-4200-ABDF-1F8F9A912AB3}.All|Any CPU.Build.0 = Release
 		{761A2A5F-B9C5-4200-ABDF-1F8F9A912AB3}.Debug|Any CPU.ActiveCfg = Debug
 		{761A2A5F-B9C5-4200-ABDF-1F8F9A912AB3}.Release|Any CPU.ActiveCfg = Release
 		{761A2A5F-B9C5-4200-ABDF-1F8F9A912AB3}.Release|Any CPU.Build.0 = Release

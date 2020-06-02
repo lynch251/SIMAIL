@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="17.0" version="17.0" Modules="simple" RootPath="." Language="en" Id="{F89345E4-31A2-4E74-8ED7-7C0952BF7CA7}">
+  <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
+    <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_BouncyCastle.Crypto.dll" Value="..\packages\BouncyCastle.1.8.5\lib"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Google.Apis.Auth.PlatformServices.dll" Value="..\packages\Google.Apis.Auth.1.45.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Google.Apis.Auth.dll" Value="..\packages\Google.Apis.Auth.1.45.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Google.Apis.Core.dll" Value="..\packages\Google.Apis.Core.1.45.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Google.Apis.Oauth2.v2.dll" Value="..\packages\Google.Apis.Oauth2.v2.1.45.0.1869\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Google.Apis.PlatformServices.dll" Value="..\packages\Google.Apis.1.45.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Google.Apis.dll" Value="..\packages\Google.Apis.1.45.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_HtmlAgilityPack.dll" Value="..\packages\HtmlAgilityPack.1.11.18\lib\Net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MailKit.dll" Value="..\packages\MailKit.2.5.0\lib\net46"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MaterialDesignColors.dll" Value="..\packages\MaterialDesignColors.1.2.2\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MaterialDesignThemes.Wpf.dll" Value="..\packages\MaterialDesignThemes.3.0.1\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MimeKit.dll" Value="..\packages\MimeKit.2.5.0\lib\net46"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Newtonsoft.Json.dll" Value="..\packages\Newtonsoft.Json.12.0.3\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SIMAIL.exe" Value="..\SIMAIL\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SIMAIL.exe.config" Value="..\SIMAIL\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SIMAIL.pdb" Value="..\SIMAIL\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Syroot.KnownFolders.dll" Value="..\packages\Syroot.Windows.IO.KnownFolders.1.2.3\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Security.Principal.Windows.dll" Value="..\packages\System.Security.Principal.Windows.4.7.0\lib\net461"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_BouncyCastle.Crypto.dll" Value="BouncyCastle.Crypto.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Auth.PlatformServices.dll" Value="Google.Apis.Auth.PlatformServices.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Auth.dll" Value="Google.Apis.Auth.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Core.dll" Value="Google.Apis.Core.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Oauth2.v2.dll" Value="Google.Apis.Oauth2.v2.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.PlatformServices.dll" Value="Google.Apis.PlatformServices.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.dll" Value="Google.Apis.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_HtmlAgilityPack.dll" Value="HtmlAgilityPack.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MailKit.dll" Value="MailKit.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignColors.dll" Value="MaterialDesignColors.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignThemes.Wpf.dll" Value="MaterialDesignThemes.Wpf.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MimeKit.dll" Value="MimeKit.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll" Value="Newtonsoft.Json.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_SIMAIL.exe" Value="SIMAIL.exe"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_SIMAIL.exe.config" Value="SIMAIL.exe.config"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_SIMAIL.pdb" Value="SIMAIL.pdb"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Syroot.KnownFolders.dll" Value="Syroot.KnownFolders.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Security.Principal.Windows.dll" Value="System.Security.Principal.Windows.dll"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="Manufacturer" Value="Your Company"/>
+    <ROW Property="ProductCode" Value="1033:{FD8C2EFE-BB41-4F2F-8806-7D631ECA84DB} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Your Application"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{FE2E6390-C35B-4CB7-8DCF-B5133449A069}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="SIMAIL_Dir" Directory_Parent="APPDIR" DefaultDir="SIMAIL"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="APPDIR" ComponentId="{3586CEFE-A12A-4E94-AF04-13299B9FFDC1}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="ProductInformation" ComponentId="{E67E101C-890A-4E26-A6EC-89AA5FB8C734}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{BC1BFE05-FF66-453F-B389-8FA426683E3E}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="SIMAIL_PrimaryOutput" ComponentId="{1A90AC5E-0BB8-4783-BEAA-4BCAC139D911}" Directory_="SIMAIL_Dir" Attributes="0" KeyPath="SIMAIL.exe"/>
+    <ROW Component="SIMAIL_References" ComponentId="{84BD6820-35ED-476D-9F50-65DF65E65618}" Directory_="SIMAIL_Dir" Attributes="0" KeyPath="System.Security.Principal.Windows.dll"/>
+    <ROW Component="SIMAIL_SymbolsOutput" ComponentId="{C8501C83-33A7-433B-849A-51DCCFBEA3C2}" Directory_="SIMAIL_Dir" Attributes="0" KeyPath="SIMAIL.pdb"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="SIMAIL.exe" Component_="SIMAIL_PrimaryOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_SIMAIL.exe]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SIMAIL.exe&gt;" SelfReg="false" DigSign="true"/>
+    <ROW File="SIMAIL.exe.config" Component_="SIMAIL_PrimaryOutput" FileName="SIMAIL~2.CON|[|AI_PROPPATH_FILENAME_PERBUILD_SIMAIL.exe.config]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SIMAIL.exe.config&gt;" SelfReg="false"/>
+    <ROW File="BouncyCastle.Crypto.dll" Component_="SIMAIL_References" FileName="BOUNCY~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_BouncyCastle.Crypto.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_BouncyCastle.Crypto.dll&gt;" SelfReg="false"/>
+    <ROW File="Google.Apis.Auth.dll" Component_="SIMAIL_References" FileName="GOOGLE~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Auth.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Google.Apis.Auth.dll&gt;" SelfReg="false"/>
+    <ROW File="Google.Apis.Auth.PlatformServices.dll" Component_="SIMAIL_References" FileName="GOOGLE~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Auth.PlatformServices.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Google.Apis.Auth.PlatformServices.dll&gt;" SelfReg="false"/>
+    <ROW File="Google.Apis.Core.dll" Component_="SIMAIL_References" FileName="GOOGLE~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Core.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Google.Apis.Core.dll&gt;" SelfReg="false"/>
+    <ROW File="Google.Apis.dll" Component_="SIMAIL_References" FileName="GOOGLE~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Google.Apis.dll&gt;" SelfReg="false"/>
+    <ROW File="Google.Apis.Oauth2.v2.dll" Component_="SIMAIL_References" FileName="GOOGLE~6.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Oauth2.v2.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Google.Apis.Oauth2.v2.dll&gt;" SelfReg="false"/>
+    <ROW File="Google.Apis.PlatformServices.dll" Component_="SIMAIL_References" FileName="GOOGLE~7.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.PlatformServices.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Google.Apis.PlatformServices.dll&gt;" SelfReg="false"/>
+    <ROW File="HtmlAgilityPack.dll" Component_="SIMAIL_References" FileName="HTMLAG~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_HtmlAgilityPack.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_HtmlAgilityPack.dll&gt;" SelfReg="false"/>
+    <ROW File="MailKit.dll" Component_="SIMAIL_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_MailKit.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MailKit.dll&gt;" SelfReg="false"/>
+    <ROW File="MaterialDesignColors.dll" Component_="SIMAIL_References" FileName="MATERI~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignColors.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MaterialDesignColors.dll&gt;" SelfReg="false"/>
+    <ROW File="MaterialDesignThemes.Wpf.dll" Component_="SIMAIL_References" FileName="MATERI~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignThemes.Wpf.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MaterialDesignThemes.Wpf.dll&gt;" SelfReg="false"/>
+    <ROW File="MimeKit.dll" Component_="SIMAIL_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_MimeKit.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MimeKit.dll&gt;" SelfReg="false"/>
+    <ROW File="Newtonsoft.Json.dll" Component_="SIMAIL_References" FileName="NEWTON~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Newtonsoft.Json.dll&gt;" SelfReg="false"/>
+    <ROW File="Syroot.KnownFolders.dll" Component_="SIMAIL_References" FileName="SYROOT~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Syroot.KnownFolders.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Syroot.KnownFolders.dll&gt;" SelfReg="false"/>
+    <ROW File="System.Security.Principal.Windows.dll" Component_="SIMAIL_References" FileName="SYSTEM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Security.Principal.Windows.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Security.Principal.Windows.dll&gt;" SelfReg="false"/>
+    <ROW File="SIMAIL.pdb" Component_="SIMAIL_SymbolsOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_SIMAIL.pdb]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SIMAIL.pdb&gt;" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
+    <ROW Name="AI_APPPATH_PERBUILD_BouncyCastle.Crypto.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_BouncyCastle.Crypto.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_BouncyCastle.Crypto.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Google.Apis.Auth.PlatformServices.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Google.Apis.Auth.PlatformServices.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Auth.PlatformServices.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Google.Apis.Auth.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Google.Apis.Auth.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Auth.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Google.Apis.Core.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Google.Apis.Core.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Core.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Google.Apis.Oauth2.v2.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Google.Apis.Oauth2.v2.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.Oauth2.v2.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Google.Apis.PlatformServices.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Google.Apis.PlatformServices.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.PlatformServices.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Google.Apis.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Google.Apis.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Google.Apis.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_HtmlAgilityPack.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_HtmlAgilityPack.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_HtmlAgilityPack.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MailKit.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MailKit.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MailKit.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MaterialDesignColors.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MaterialDesignColors.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignColors.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MaterialDesignThemes.Wpf.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MaterialDesignThemes.Wpf.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignThemes.Wpf.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MimeKit.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MimeKit.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MimeKit.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Newtonsoft.Json.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Newtonsoft.Json.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_SIMAIL.exe" Path="[|AI_PROPPATH_DIR_PERBUILD_SIMAIL.exe]\[|AI_PROPPATH_FILENAME_PERBUILD_SIMAIL.exe]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_SIMAIL.exe.config" Path="[|AI_PROPPATH_DIR_PERBUILD_SIMAIL.exe.config]\[|AI_PROPPATH_FILENAME_PERBUILD_SIMAIL.exe.config]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_SIMAIL.pdb" Path="[|AI_PROPPATH_DIR_PERBUILD_SIMAIL.pdb]\[|AI_PROPPATH_FILENAME_PERBUILD_SIMAIL.pdb]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Syroot.KnownFolders.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Syroot.KnownFolders.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Syroot.KnownFolders.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Security.Principal.Windows.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Security.Principal.Windows.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Security.Principal.Windows.dll]" Type="2" Content="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
+    <ROW Feature_="MainFeature" Component_="APPDIR"/>
+    <ROW Feature_="MainFeature" Component_="ProductInformation"/>
+    <ROW Feature_="MainFeature" Component_="SIMAIL_PrimaryOutput"/>
+    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
+    <ROW Feature_="MainFeature" Component_="SIMAIL_References"/>
+    <ROW Feature_="MainFeature" Component_="SIMAIL_SymbolsOutput"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="SIMAIL" Directory_="SHORTCUTDIR" Name="SIMAIL" Component_="SIMAIL_PrimaryOutput" Target="[#SIMAIL.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.VsProjectComponent">
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="PrimaryOutput" OutputFile="SIMAIL.exe" OutputFileShortcut="SIMAIL"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="PrimaryOutput" OutputFile="SIMAIL.exe.config"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="BouncyCastle.Crypto.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="Google.Apis.Auth.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="Google.Apis.Auth.PlatformServices.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="Google.Apis.Core.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="Google.Apis.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="Google.Apis.Oauth2.v2.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="Google.Apis.PlatformServices.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="HtmlAgilityPack.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="MailKit.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="MaterialDesignColors.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="MaterialDesignThemes.Wpf.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="MimeKit.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="Newtonsoft.Json.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="Syroot.KnownFolders.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="References" OutputFile="System.Security.Principal.Windows.dll"/>
+    <ROW ProjectId="{09fd0883-4df5-43e8-b70c-3ec25cb4d245}" ProjectName="SIMAIL" OutputGroup="SymbolsOutput" OutputFile="SIMAIL.pdb"/>
+  </COMPONENT>
+</DOCUMENT>

@@ -73,7 +73,7 @@ namespace SIMAIL.Views
         {
             if (currentCompteMessagerie != null & currentCompteMessagerie.isAuthenticated())
             {
-                L_compteEmail.Content = currentCompteMessagerie.Identifiant;
+                L_compteEmail.Content = currentCompteMessagerie.Login;
             }
         }
 

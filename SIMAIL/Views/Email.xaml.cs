@@ -95,7 +95,7 @@ namespace SIMAIL.Views
                 {
                     // Chargement des paramètres utilisateur
                     email.CompteMessagerie = currentCompteMessagerie;
-                    email.From = currentCompteMessagerie.Identifiant;
+                    email.From = currentCompteMessagerie.Login;
                 }
                 else
                 {
@@ -343,28 +343,41 @@ namespace SIMAIL.Views
         {
             // Récupérer la largeur de police de la sélection
             Object obj = I_Body.Selection.GetPropertyValue(Inline.FontWeightProperty);
-            if (obj != DependencyProperty.UnsetValue && obj.Equals(FontWeights.Bold))
-                BT_BodyBold.IsChecked = true;
+            if (obj != null)
+            {
+                if (obj != DependencyProperty.UnsetValue && obj.Equals(FontWeights.Bold))
+                    BT_BodyBold.IsChecked = true;
+            }
 
 
             // Si la sélection est en italique
             obj = I_Body.Selection.GetPropertyValue(Inline.FontStyleProperty);
-            if (obj != DependencyProperty.UnsetValue && obj.Equals(FontStyles.Italic))
-                BT_BodyItalic.IsChecked = true;
-           // I_Body.Selection.ApplyPropertyValue(FontWeightProperty, FontWeights.Bold);
-
+            if (obj != null)
+            {
+                if (obj != DependencyProperty.UnsetValue && obj.Equals(FontStyles.Italic))
+                    BT_BodyItalic.IsChecked = true;
+                // I_Body.Selection.ApplyPropertyValue(FontWeightProperty, FontWeights.Bold);
+            }
 
             // Si la sélection est soulignée
             obj = I_Body.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
-            if (obj != DependencyProperty.UnsetValue && obj.Equals(TextDecorations.Underline))
-                BT_BodyUnderline.IsChecked = true;
-
+            if (obj != null)
+            {
+                if (obj != DependencyProperty.UnsetValue && obj.Equals(TextDecorations.Underline))
+                    BT_BodyUnderline.IsChecked = true;
+            }
 
             obj = I_Body.Selection.GetPropertyValue(Inline.FontFamilyProperty);
-            CB_BodyFontFamily.SelectedItem = obj;
+            if (obj != null)
+            {
+                CB_BodyFontFamily.SelectedItem = obj;
+            }
 
             obj = I_Body.Selection.GetPropertyValue(Inline.FontSizeProperty);
-            CB_BodyFontSize.Text = obj.ToString();
+            if (obj != null)
+            {
+                CB_BodyFontSize.Text = obj.ToString();
+            }
         }
 
         // Récupère les données saisies pour l'envoi du mail

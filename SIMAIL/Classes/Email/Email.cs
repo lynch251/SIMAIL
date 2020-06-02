@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Net.Mail;
 using System.Xml;
 using SIMAIL.Classes.Utilisateur;
 using MessageBox = System.Windows.Forms.MessageBox;
 using MimeKit;
+using MailKit.Net.Smtp;
+using MimeKit.Text;
+using System.IO;
 
 namespace SIMAIL.Classes.Email
 {
@@ -35,64 +37,94 @@ namespace SIMAIL.Classes.Email
         }
 
 
-        public MailMessage getMailMessage()
+        public MimeMessage getMailMessage()
         {
-            MailMessage vMailMsg = new MailMessage(); // V1.2 migration vers MimeMessage (librairie Mimekit)
+            MimeMessage vMailMsg = new MimeMessage(); // V1.2 migration vers MimeMessage (librairie Mimekit)
             MimeMessage msg = new MimeMessage();
-            
-            vMailMsg.IsBodyHtml = true;
+            BodyBuilder bb = new BodyBuilder();
 
+            //vMailMsg.Body.ContentType.Format =  .IsBodyHtml = true;
+
+            // From         
+            vMailMsg.From.Add(new MailboxAddress(From));
             // From
-            vMailMsg.From = new MailAddress(this.From);
-            // From
-            vMailMsg.Sender = new MailAddress(this.From);
+            vMailMsg.Sender = new MailboxAddress(From);
             // Objet
             vMailMsg.Subject = this.Object;
             // To
             foreach (var vDestinataire in this.To)
-                vMailMsg.To.Add(vDestinataire.Address);
+                vMailMsg.To.Add(new MailboxAddress(vDestinataire.Address));
             // Cc
             foreach (var destinataireCc in this.Cc)
-                vMailMsg.CC.Add(destinataireCc.Address);
+                vMailMsg.Cc.Add(new MailboxAddress(destinataireCc.Address));
 
-            // Template (Texte du mail (template ou non, signature ou non)
-            vMailMsg.Body = this.Body.Text; // Me.Body.ToHTML() '
+            // Body in html and in plain text
+            bb.HtmlBody = Body.ToHTML();
+            bb.TextBody = Body.Text;
+            //vMailMsg.Body = new TextPart(TextFormat.Html)
+            //{
+            //    Text = Body.ToHTML()
+            //   // Body.Text // Me.Body.ToHTML() '
+            //};
 
             // Body et Signature
-            if (Body.ToHTML() != "")
-            {
-                System.Net.Mail.AlternateView htmlView;
-                string MailContent;
-                // Si il y a une signature, l'incorporer la signature dans le body
-                if (this.Signature.ficSignatureHTMLFullName != null)
-                {
-                    this.Signature.HTMLLoad();
-                    // Ajouter au html de la signature les identifiants cid
-                    this.Signature.html = this.Signature.remplacerOldSrcByCidSrc();
-                    this.Body.Signature = this.Signature;
-                }
-                MailContent = this.Body.ToHTML();
-                // ajouter le mailContent en tant que "alternateView" au mail
-                htmlView = System.Net.Mail.AlternateView.CreateAlternateViewFromString(MailContent, null, "text/html");
-                // Encodage en base64 ! important ! sinon les images ressources ne seront pas intégrées (embedded) au corps de mail mais insérée en tant que pj
+            //if (Body.ToHTML() != "")
+            //{
+            //    System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();
+            //    System.Net.Mail.AlternateView htmlView;
+            //    string MailContent;
+            //    // Si il y a une signature, l'incorporer la signature dans le body
+            //    if (this.Signature.ficSignatureHTMLFullName != null)
+            //    {
+            //        this.Signature.HTMLLoad();
+            //        // Ajouter au html de la signature les identifiants cid
+            //        this.Signature.html = this.Signature.remplacerOldSrcByCidSrc();
+            //        this.Body.Signature = this.Signature;
+            //    }
+            //    MailContent = this.Body.ToHTML();
+            //    // ajouter le mailContent en tant que "alternateView" au mail
+            //    htmlView = System.Net.Mail.AlternateView.CreateAlternateViewFromString(MailContent, null, "text/html");
+            //    // Encodage en base64 ! important ! sinon les images ressources ne seront pas intégrées (embedded) au corps de mail mais insérée en tant que pj
 
-                // ajouter les ressources de la template (images) à la vue
-                foreach (var vLinkedResource in this.Signature.getLinkedResources())
-                {
-                    vLinkedResource.TransferEncoding = System.Net.Mime.TransferEncoding.Base64;
-                    htmlView.LinkedResources.Add(vLinkedResource);
-                }
+            //    // ajouter les ressources de la template (images) à la vue
+            //    foreach (var vLinkedResource in this.Signature.getLinkedResources())
+            //    {
+            //        vLinkedResource.TransferEncoding = System.Net.Mime.TransferEncoding.Base64;
+            //        htmlView.LinkedResources.Add(vLinkedResource);
+            //    }
+            //    m.AlternateViews.Add(htmlView);
 
-                vMailMsg.AlternateViews.Add(htmlView);
-            }
+            //    // Conversion du mailmessage en MimeMessage
+            //    if (m.AlternateViews.Count > 0)
+            //    {
+            //        var alternative = new MultipartAlternative();
+            //        var body = new TextPart(TextFormat.Html)
+            //        {
+            //            Text = Body.ToHTML() 
+            //        };
+            //        alternative.Add(body);
+            //        foreach (var view in m.AlternateViews)
+            //        {
+            //            var part = GetMimePart(view);
+            //        }
+            //    }
+            //}
 
             // Pièces jointes
             foreach (var piece in this.Pj)
             {
-                Attachment attachement = new Attachment(piece.FullName);
-                vMailMsg.Attachments.Add(attachement);
+                var attachment = new MimePart("file", piece.Extension)
+                {
+                    Content = new MimeContent (File.OpenRead(piece.FullName), ContentEncoding.Default),
+                    ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                    ContentTransferEncoding = ContentEncoding.Base64,
+                    FileName = piece.Name
+                };
+                bb.Attachments.Add(attachment);
             }
 
+            // building the body of the current mail (HTML/text content, attachments, resources)
+            vMailMsg.Body = bb.ToMessageBody();
 
             return vMailMsg;
         }
@@ -104,31 +136,28 @@ namespace SIMAIL.Classes.Email
 
             // Récupérer la connexion Smtp
             SmtpClient vSMTPClient = new SmtpClient(); // CHANGER vers MailKit.Smtp.SmtpCLient
-            vSMTPClient = this.CompteMessagerie.getCnxSMTP();
+            vSMTPClient = await CompteMessagerie.getSMTPConnection();
 
             await Task.Run(() =>
             {
                 // Envoi du mail
                 try
                 {
-                    MailMessage vMailMsg = new MailMessage();
+                    MimeMessage vMailMsg = new MimeMessage();
                     vMailMsg = this.getMailMessage();
                     // Me.HtmlSplitPJ(vMailMsg.Body, vMailMsg.Attachments)
                     vSMTPClient.Send(vMailMsg);
-
-                    // Libère les ressources
-                    vMailMsg.Attachments.Dispose();
-                    // vMailMsg.AlternateViews.Dispose()
-
-                    vSMTPClient.Dispose(); // Permet de clore la connexion.
+                    // Libère les ressources                
+                    // vMailMsg.AlternatViews.Dispose()                                   
                     returnVal = true;
+                    vSMTPClient.Dispose(); // Permet de clore la connexion. 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                     returnVal = false;
                 }
-            });
+            });          
 
             return returnVal;
         }
@@ -267,6 +296,12 @@ namespace SIMAIL.Classes.Email
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+
+        public void showosifjso()
+        {
+
         }
 
         public void ShowFenMail(SIMAIL.Views.Email pfenMail)

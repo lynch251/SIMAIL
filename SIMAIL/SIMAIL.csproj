@@ -424,7 +424,9 @@
     <Resource Include="Resources\logo\logo_white2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logo_white3.ico" />
+    <Resource Include="logo_white3.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icons\google.png" />

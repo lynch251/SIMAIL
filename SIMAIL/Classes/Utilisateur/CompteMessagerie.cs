@@ -2,6 +2,7 @@
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Util.Store;
 using MailKit.Net.Imap;
+using MailKit.Net.Smtp;
 using MailKit.Search;
 using MailKit.Security;
 using Syroot.Windows.IO;
@@ -9,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Net.Mail;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,65 +19,117 @@ namespace SIMAIL.Classes.Utilisateur
 
     public class CompteMessagerie
     {
-        public string Identifiant { get; set; }
-        public string Mdp { get; set; }
-        public ImapClient IMAPclient { get; set; }
-
+        #region "Attributs"
+        public string Login
+        {
+            get => _Login;
+            set
+            {
+                if (IMAPConnexion == null) 
+                {
+                    // if the user is not connected
+                    _Login = value;
+                }
+            }
+        }
+        public string Pass
+        {
+            get
+            {
+                    return _Pass;
+            }
+            set
+            {
+                if (IMAPConnexion == null)
+                {
+                    // if the user is not connected
+                    _Pass = value;
+                }
+            }
+        }
+        /// <summary> Instance unique de connexion au serveur IMAP </summary>
+        private ImapClient IMAPConnexion;
+        /// <summary> Instance unique de connexion au serveur SMTP </summary>
+        private  SmtpClient SMTPConnexion;
+        /// <summary> Objet contenant les paramètres de connexion SMTP et IMAP définis par l'utilisateur </summary>
         public CompteServeur compteServeur { get; set; }
         public string compteServDefaultDirectory { get; set; }
-
         public int nbMailToLoad { get; set; }
         /// Temps en minutes
         public int timerInboxReload { get; set; }
+        #endregion
 
+        #region "Variables"
         bool asyncProcessRunning = false;
+        private string _Login;
+        private string _Pass;
+        #endregion
 
-        // Singleton
-        private static CompteMessagerie instance;
-        /// <summary>
-        /// Récupère le compte ou initialise un nouveau compte
-        /// </summary>
-        /// <returns></returns>
-        public static CompteMessagerie Instance()
+        public async Task<ImapClient> getIMAPConnection()
         {
-            if (instance == null)
+            if (IMAPConnexion == null) { IMAPConnexion = new ImapClient(); }
+            if (IMAPConnexion.IsAuthenticated == false)
             {
-                instance = new CompteMessagerie();    
+               if(await IMAPAuthenticate() == null)
+                {
+                    IMAPConnexion = null;
+                }
+                else
+                {
+                    IMAPConnexion = await IMAPAuthenticate();
+                }
             }
-            return instance;
+            return IMAPConnexion;
         }
 
-        /// Retourne une connexion IMAP ouverte
-        public async Task<ImapClient> Authenticate()
+        public async Task<SmtpClient> getSMTPConnection()
         {
-            ImapClient client = null;
+            if (SMTPConnexion == null) { SMTPConnexion = new SmtpClient(); }
+            if (SMTPConnexion.IsAuthenticated == false)
+            {
+                if (await SMTPAuthenticate() == null)
+                {
+                    SMTPConnexion = null;
+                }
+                else
+                {
+                    SMTPConnexion = await SMTPAuthenticate();
+                }              
+            }
+            return SMTPConnexion;
+        }
+
+        /// <summary>Retourne une connexion IMAP ouverte</summary>
+        private async Task<ImapClient> IMAPAuthenticate()
+        {
+            ImapClient ic;
             switch (compteServeur.methodeConnexion)
             {
                 case CompteServeur.MethConnexion.Identifiants:
                     if (isValid())
                     {
-                        IMAPclient = new ImapClient();
 
+                        ic = new ImapClient();
                         // For demo-purposes, accept all SSL certificates
-                        IMAPclient.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                        ic.ServerCertificateValidationCallback = (s, c, h, e) => true;
                         await Task.Run(() =>
                         {
                             try
                             {
                                 if (compteServeur.ChiffrementIMAP == CompteServeur.Chiffrement.SSL)
                                 {
-                                    IMAPclient.Connect(compteServeur.AdresseIMAP, compteServeur.PortIMAP, MailKit.Security.SecureSocketOptions.SslOnConnect);
+                                    ic.Connect(compteServeur.AdresseIMAP, compteServeur.PortIMAP, MailKit.Security.SecureSocketOptions.SslOnConnect);
                                 }
                                 else if (compteServeur.ChiffrementIMAP == CompteServeur.Chiffrement.TLS)
                                 {
-                                    IMAPclient.Connect(compteServeur.AdresseIMAP, compteServeur.PortIMAP, MailKit.Security.SecureSocketOptions.StartTls);
+                                    ic.Connect(compteServeur.AdresseIMAP, compteServeur.PortIMAP, MailKit.Security.SecureSocketOptions.StartTls);
                                 }
                                 else
                                 {
-                                    IMAPclient.Connect(compteServeur.AdresseIMAP, compteServeur.PortIMAP, false);
+                                    ic.Connect(compteServeur.AdresseIMAP, compteServeur.PortIMAP, false);
                                 }
                                 asyncProcessRunning = true;
-                                IMAPclient.Authenticate(Identifiant, Mdp);
+                                ic.Authenticate(Login, Pass);
                                 this.nbMailToLoad = 25; // rendre paramétrable
                             }
                             catch (System.Exception e)
@@ -86,17 +138,16 @@ namespace SIMAIL.Classes.Utilisateur
                             }
                         });
                         asyncProcessRunning = false;
-                        if (IMAPclient.IsAuthenticated == true)
+                        if (ic.IsAuthenticated == true)
                         {
-                            client = IMAPclient;
-                            return client;
+                            return ic;
                         }
                     }
                     break;
 
                 case CompteServeur.MethConnexion.OAuth2:
 
-                    ImapClient ImapClient = new ImapClient();
+                    ic = new ImapClient();
                     var clientSecrets = new ClientSecrets
                     {
                         ClientId = "294403304718-bptp75nbk64qi2klfvjidqvklmcqp9vm.apps.googleusercontent.com",
@@ -113,7 +164,7 @@ namespace SIMAIL.Classes.Utilisateur
                     var codeReceiver = new LocalServerCodeReceiver();
                     var authCode = new AuthorizationCodeInstalledApp(codeFlow, codeReceiver);
                     CancellationToken cancellationToken = new CancellationToken();
-                    var credential = authCode.AuthorizeAsync(Identifiant, cancellationToken).Result;
+                    var credential = authCode.AuthorizeAsync(Login, cancellationToken).Result;
 
                     cancellationToken.ThrowIfCancellationRequested();
 
@@ -121,42 +172,48 @@ namespace SIMAIL.Classes.Utilisateur
 
                     var oauth2 = new SaslMechanismOAuth2(credential.UserId, credential.Token.AccessToken);
 
-                    await ImapClient.ConnectAsync("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect); // non paramètrable
-                    await ImapClient.AuthenticateAsync(oauth2);
+                        await ic.ConnectAsync("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect); // non paramètrable
+                    await ic.AuthenticateAsync(oauth2);
                                 
-                    if (ImapClient.IsAuthenticated)
+                    if (ic.IsAuthenticated)
                     {
-                        client = ImapClient;
+                        return ic;
                     }
                     asyncProcessRunning = false;
 
                     break;
             }
-            return client;
+            return null;
         }
 
-        /// Connexion de type Smtp via accès non hashé pour envoi de mail
-        public SmtpClient getCnxSMTP()
+        private async Task<SmtpClient> SMTPAuthenticate()
         {
             if (isValid() & this.isAuthenticated())
             {
-                var vSMTPCnx = new SmtpClient();
-
-                vSMTPCnx.Host = this.compteServeur.AdresseSMTP;
-                vSMTPCnx.Port = this.compteServeur.PortSMTP;
+                var sc = new SmtpClient();
+                SecureSocketOptions chiffrement = SecureSocketOptions.None;
                 if (this.compteServeur.ChiffrementSMTP == CompteServeur.Chiffrement.SSL)
                 {
-                    vSMTPCnx.EnableSsl = true;
+                    chiffrement = SecureSocketOptions.Auto ;
                 }
-                //if (this.compteServeur.ChiffrementSMTP == CompteServeur.Chiffrement.TLS)
-                //{
-                //    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                //}
-                vSMTPCnx.DeliveryMethod = SmtpDeliveryMethod.Network;
-                System.Net.NetworkCredential SMTPUserInfo = new System.Net.NetworkCredential(this.Identifiant, this.Mdp);
-                vSMTPCnx.Credentials = SMTPUserInfo;
+                else if (this.compteServeur.ChiffrementSMTP == CompteServeur.Chiffrement.TLS)
+                {
+                    chiffrement = SecureSocketOptions.StartTlsWhenAvailable;
+                }
 
-                return vSMTPCnx;
+                await sc.ConnectAsync(compteServeur.AdresseSMTP, compteServeur.PortSMTP, chiffrement);
+                switch (compteServeur.methodeConnexion)
+                {
+                    case CompteServeur.MethConnexion.Identifiants:
+                         sc.Authenticate(this.Login, this.Pass);
+                        if (sc.IsAuthenticated)
+                        {
+                            return sc;
+                        }
+                            break;
+                    case CompteServeur.MethConnexion.OAuth2:
+                        break;
+                }                
             }
             return null;
         }
@@ -166,7 +223,7 @@ namespace SIMAIL.Classes.Utilisateur
         {
             if (compteServeur != null)
             {
-                if (compteServeur.AdresseIMAP != "" & compteServeur.PortIMAP != 0 & Mdp != "" & Identifiant != "")
+                if (compteServeur.AdresseIMAP != "" & compteServeur.PortIMAP != 0 & Pass != "" & Login != "")
                 {
                     return true;
                 } 
@@ -178,13 +235,13 @@ namespace SIMAIL.Classes.Utilisateur
         public bool isAuthenticated()
         {
             bool vValue = false;
-            if (IMAPclient != null)
+            if (IMAPConnexion != null)
             {
-                if (IMAPclient.IsConnected & IMAPclient.IsAuthenticated)
+                if (IMAPConnexion.IsConnected & IMAPConnexion.IsAuthenticated)
                 {
                     try
                     {
-                        IMAPclient.Inbox.Open(MailKit.FolderAccess.ReadWrite);
+                        IMAPConnexion.Inbox.Open(MailKit.FolderAccess.ReadWrite);
                         vValue = true;
                     }
                     catch(Exception ex)
@@ -207,7 +264,7 @@ namespace SIMAIL.Classes.Utilisateur
 
         public override string ToString()
         {
-            return Identifiant;
+            return Login;
         }
 
 
